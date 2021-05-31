@@ -9,11 +9,11 @@ import javax.persistence.*;
 @Table(name = "jobs")
 public class Job {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "jobName")
+    @Column(name = "title")
     private String jobName;
 
 }

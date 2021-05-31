@@ -1,12 +1,12 @@
 package com.fsd.hrms.api.controllers;
 
 import com.fsd.hrms.business.abstracts.JobServices;
-import com.fsd.hrms.dataAccess.abstracts.JobDao;
+import com.fsd.hrms.core.utilities.results.DataResult;
+import com.fsd.hrms.core.utilities.results.Result;
 import com.fsd.hrms.entities.concretes.Job;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -22,8 +22,14 @@ public class JobsController {
     }
 
     @GetMapping("/getall")
-    public List<Job> getAll(){
+    public DataResult<List<Job>> getAll(){
        return this.jobServices.getAll();
+    }
+
+    @PostMapping("/add")
+    public Result add(@RequestBody Job job){
+        return this.jobServices.add(job);
+
     }
 
 }
